@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cancionero Parroquial</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:       #faf6f0;
+  --bg2:      #fff9f3;
+  --text:     #2a1a0e;
+  --muted:    #7a5c4a;
+  --chord:    #8b1a1a;
+  --accent:   #b5830d;
+  --border:   #e2cdb8;
+  --shadow:   rgba(44,24,8,.07);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Crimson Text',Georgia,serif;background:var(--bg);color:var(--text);min-height:100vh}
+
+/* ── HEADER ── */
+header{background:var(--text);color:var(--bg);padding:.85rem 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.logo{font-family:'Cormorant Garamond',serif;font-size:1.45rem;font-weight:600;letter-spacing:.04em}
+.logo span{color:#c9a86c;margin-right:.4rem}
+.btn-hdr{font-family:'Crimson Text',serif;font-size:.9rem;background:transparent;color:var(--bg);border:1px solid rgba(255,255,255,.3);padding:.28rem .75rem;border-radius:4px;cursor:pointer;transition:background .18s}
+.btn-hdr:hover{background:rgba(255,255,255,.12)}
+
+/* ── BREADCRUMB ── */
+#bc{padding:.55rem 1.5rem;font-size:.88rem;color:var(--muted);border-bottom:1px solid var(--border);background:var(--bg2);display:none;flex-wrap:wrap;gap:.2rem;align-items:center}
+#bc .bc-link{cursor:pointer;transition:color .15s}
+#bc .bc-link:hover{color:var(--chord)}
+#bc .sep{color:var(--border)}
+
+/* ── MAIN ── */
+main{max-width:1080px;margin:0 auto;padding:1.8rem 1.5rem}
+
+/* ── HOME GRID ── */
+.page-sub{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:400;font-style:italic;color:var(--muted);text-align:center;margin-bottom:1.5rem}
+.cat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:1rem}
+.cat-card{background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:1.1rem;cursor:pointer;transition:transform .18s,box-shadow .18s,border-color .18s;text-align:center;box-shadow:0 1px 4px var(--shadow)}
+.cat-card:hover{transform:translateY(-3px);box-shadow:0 4px 14px var(--shadow);border-color:var(--accent)}
+.cat-num{font-family:'Cormorant Garamond',serif;font-size:1.9rem;font-weight:300;color:var(--accent);line-height:1;margin-bottom:.25rem}
+.cat-name{font-family:'Cormorant Garamond',serif;font-size:1.05rem;font-weight:700;color:var(--text)}
+.cat-count{font-size:.82rem;color:var(--muted);margin-top:.25rem}
+
+/* ── SONG LIST ── */
+.section-title{font-family:'Cormorant Garamond',serif;font-size:1.7rem;font-weight:400;margin-bottom:1.1rem}
+.song-list{list-style:none;border-top:1px solid var(--border)}
+.song-item{display:flex;justify-content:space-between;align-items:center;padding:.75rem .8rem;border-bottom:1px solid var(--border);cursor:pointer;transition:background .15s}
+.song-item:hover{background:var(--bg2)}
+.song-item-title{font-family:'Cormorant Garamond',serif;font-size:1.12rem}
+.song-item-arr{color:var(--border);font-size:1.1rem}
+
+/* ── SONG VIEW ── */
+.song-hdr{margin-bottom:1.3rem;padding-bottom:.9rem;border-bottom:1px solid var(--border)}
+.song-hdr h2{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:600;line-height:1.15}
+.song-hdr .s-cat{font-size:.88rem;color:var(--muted);margin-top:.2rem}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:start}
+.col-label{font-family:'Cormorant Garamond',serif;font-size:.8rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:.6rem;padding-bottom:.35rem;border-bottom:1px solid var(--border)}
+
+/* ── LYRICS ── */
+.lyrics{font-size:1.08rem;line-height:1.8}
+.lyr-line{display:block;min-height:1.8em}
+.lyr-line.bold{font-weight:600}
+.lyr-blank{display:block;height:.7em}
+.chord-line{display:flex;flex-wrap:wrap;align-items:flex-end;line-height:1.2;margin-bottom:.05em}
+.chord-line.bold .lyr-txt{font-weight:600}
+.cg{display:inline-flex;flex-direction:column;align-items:flex-start;line-height:1.15}
+.chord{font-size:.82em;font-weight:700;color:var(--chord);font-family:'Crimson Text',serif;letter-spacing:.02em;white-space:pre;min-width:.5ch;padding-bottom:1px}
+.lyr-txt{font-size:1em;white-space:pre}
+
+/* ── TRANSPOSE ── */
+.transp-box{margin-top:1.2rem;padding:.85rem 1rem;background:var(--bg2);border:1px solid var(--border);border-radius:6px;display:flex;align-items:center;flex-wrap:wrap;gap:.6rem}
+.transp-lbl{font-size:.88rem;color:var(--muted);font-family:'Cormorant Garamond',serif;font-weight:600}
+.transp-val{font-family:'Cormorant Garamond',serif;font-size:1.05rem;font-weight:700;color:var(--chord);min-width:52px;text-align:center}
+
+/* ── BUTTONS ── */
+.btn{font-family:'Crimson Text',serif;font-size:.98rem;padding:.28rem .75rem;border-radius:4px;cursor:pointer;border:1px solid var(--border);background:white;color:var(--text);transition:all .15s}
+.btn:hover{border-color:var(--accent);background:var(--bg)}
+.btn-pri{background:var(--chord);color:white;border-color:var(--chord)}
+.btn-pri:hover{background:#6e1414}
+.btn-sm{font-size:.85rem;padding:.22rem .6rem}
+.btn-del{color:#c0392b;border-color:#c0392b}
+.btn-del:hover{background:#fdf0ef}
+
+/* ── ADMIN ── */
+.admin-login-wrap{max-width:300px;margin:2.5rem auto;background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:1.8rem;text-align:center}
+.admin-login-wrap h2{font-family:'Cormorant Garamond',serif;font-size:1.5rem;margin-bottom:1.1rem;font-weight:400}
+.fg{margin-bottom:.9rem;text-align:left}
+.fg label{display:block;font-size:.88rem;color:var(--muted);margin-bottom:.25rem}
+.fg input,.fg select,.fg textarea{width:100%;padding:.45rem .65rem;border:1px solid var(--border);border-radius:4px;font-family:'Crimson Text',serif;font-size:1rem;background:white;color:var(--text)}
+.fg textarea{min-height:200px;resize:vertical;font-family:'Courier New',monospace;font-size:.88rem;line-height:1.5}
+.login-err{color:#c0392b;font-size:.88rem;margin-top:.45rem;display:none}
+.admin-toolbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:1.2rem;flex-wrap:wrap;gap:.5rem}
+.admin-toolbar h2{font-family:'Cormorant Garamond',serif;font-size:1.55rem;font-weight:400}
+.admin-row{display:flex;align-items:center;padding:.55rem .7rem;border-bottom:1px solid var(--border);gap:.8rem}
+.admin-row-title{flex:1;font-family:'Cormorant Garamond',serif;font-size:1.05rem}
+.admin-row-cat{font-size:.82rem;color:var(--muted);min-width:90px}
+.notice{background:#fffbe6;border:1px solid #f0d060;border-radius:6px;padding:.7rem .9rem;font-size:.88rem;color:#6b5300;margin-bottom:1rem}
+
+/* ── MODAL ── */
+.overlay{position:fixed;inset:0;background:rgba(42,26,14,.5);display:flex;align-items:center;justify-content:center;z-index:200;padding:1rem}
+.modal{background:var(--bg);border-radius:8px;padding:1.8rem;width:100%;max-width:680px;max-height:92vh;overflow-y:auto}
+.modal h3{font-family:'Cormorant Garamond',serif;font-size:1.45rem;font-weight:600;margin-bottom:1.1rem}
+.modal-actions{display:flex;gap:.5rem;justify-content:flex-end;margin-top:.9rem}
+.export-box{background:#1e1e1e;color:#d4d4d4;font-family:'Courier New',monospace;font-size:.78rem;padding:.9rem 1rem;border-radius:5px;max-height:260px;overflow-y:auto;white-space:pre;margin:.6rem 0}
+.hint{font-size:.82rem;color:var(--muted);margin-top:.25rem;line-height:1.4}
+
+/* ── RESPONSIVE ── */
+@media(max-width:680px){
+  .two-col{grid-template-columns:1fr}
+  main{padding:1.2rem 1rem}
+  header{padding:.75rem 1rem}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo"><span>✝</span>Cancionero Parroquial</div>
+  <button class="btn-hdr" onclick="goAdmin()">Admin</button>
+</header>
+
+<div id="bc"></div>
+<main id="root"></main>
+<div id="modal"></div>
+
+<script>
+/* ================================================================
+   CONFIGURACIÓN — edita aquí para agregar cantos permanentemente
+   ================================================================ */
+const VERSION = "v1";   // Cambia a "v2", "v3"... cada vez que actualices en GitHub
+
+const SEED = [
+  {
+    id: "1",
+    title: "Hacia ti morada Santa",
+    category: "entrada",
+    content: "[Em]Hacia ti morada [B7]Santa,\n[Em]hacia ti tierra del Salvador,\n[D]peregrinos [C]caminantes,\n[B7]vamos hacia ti.\n\n[Em]Venimos a tu mesa,\n[D]sellaremos tu Pacto,\n[C]comeremos tu carne,\n[B7]tu sangre nos limpiará."
+  }
+];
+
+const PASS = "coro2024";   /* ← cambia esta contraseña */
+
+/* ================================================================ */
+
+const CATS = [
+  {id:"entrada",      name:"Entrada"},
+  {id:"piedad",       name:"Piedad"},
+  {id:"gloria",       name:"Gloria"},
+  {id:"aleluya",      name:"Aleluya"},
+  {id:"ofertorio",    name:"Ofertorio"},
+  {id:"santo",        name:"Santo"},
+  {id:"padre-nuestro",name:"Padre Nuestro"},
+  {id:"cordero",      name:"Cordero"},
+  {id:"comunion",     name:"Comunión"},
+  {id:"salida",       name:"Salida"},
+];
+
+/* ── Transposición ── */
+const SH = ['C','C#','D','D#','E','F','F#','G','G#','A','A#','B'];
+const FL = ['C','Db','D','Eb','E','F','Gb','G','Ab','A','Bb','B'];
+
+function noteIdx(n){ let i=SH.indexOf(n); return i===-1?FL.indexOf(n):i; }
+function trNote(n,d){ const i=noteIdx(n); if(i===-1)return n; const j=((i+d)%12+12)%12; return d>=0?SH[j]:FL[j]; }
+function trChord(c,d){ if(!d)return c; const m=c.match(/^([A-G][#b]?)(.*)/); return m?trNote(m[1],d)+m[2]:c; }
+
+/* ── Renderizado ── */
+function esc(s){ return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+function escSp(s){ return esc(s).replace(/ /g,'&nbsp;'); }
+
+function renderLine(raw, chords, tr){
+  if(raw==='') return '<span class="lyr-blank"></span>';
+  const bold = raw[0]==='*';
+  const line = bold ? raw.slice(1) : raw;
+  const bc = bold?' bold':'';
+
+  if(!chords || !line.includes('[')){
+    const txt = line.replace(/\[([^\]]+)\]/g,'');
+    return `<span class="lyr-line${bc}">${esc(txt)||'&nbsp;'}</span>`;
+  }
+
+  const parts=[];
+  const fi=line.indexOf('[');
+  if(fi>0) parts.push({ch:null, t:line.slice(0,fi)});
+  const re=/\[([^\]]+)\]([^\[]*)/g;
+  let m;
+  while((m=re.exec(line))!==null) parts.push({ch:trChord(m[1],tr), t:m[2]});
+
+  let h=`<span class="chord-line${bc}">`;
+  for(const p of parts){
+    const cv = p.ch ? `<span class="chord">${esc(p.ch)}</span>` : `<span class="chord"> </span>`;
+    h+=`<span class="cg">${cv}<span class="lyr-txt">${escSp(p.t||' ')}</span></span>`;
+  }
+  return h+'</span>';
+}
+
+function renderLyrics(content, chords, tr){
+  return '<div class="lyrics">'+content.split('\n').map(l=>renderLine(l,chords,tr)).join('')+'</div>';
+}
+
+/* ── Persistencia ── */
+function load(){
+  try{
+    const sv=localStorage.getItem('coro_v');
+    if(sv===VERSION){
+      const d=localStorage.getItem('coro_songs');
+      if(d) return JSON.parse(d);
+    }
+  }catch(e){}
+  save([...SEED]);
+  return [...SEED];
+}
+function save(s){
+  localStorage.setItem('coro_songs', JSON.stringify(s));
+  localStorage.setItem('coro_v', VERSION);
+}
+
+/* ── Estado ── */
+let songs=load(), adminOn=false, tr=0;
+
+function catName(id){ const c=CATS.find(c=>c.id===id); return c?c.name:id; }
+function catIdx(id){ return CATS.findIndex(c=>c.id===id); }
+
+/* ── Rutas simples ── */
+let route={view:'home', cat:null, songId:null};
+
+function go(view, cat, songId){
+  route={view, cat:cat||null, songId:songId||null};
+  tr=0;
+  render();
+  window.scrollTo(0,0);
+}
+
+function goAdmin(){ route={view:'admin',cat:null,songId:null}; render(); }
+
+/* ── Breadcrumb ── */
+function renderBC(){
+  const bc=document.getElementById('bc');
+  if(route.view==='home'){bc.style.display='none';return;}
+  bc.style.display='flex';
+  let h=`<span class="bc-link" onclick="go('home')">Inicio</span>`;
+  if(route.view==='category'||route.view==='song'){
+    h+=`<span class="sep">›</span><span class="bc-link" onclick="go('category','${route.cat}')">${catName(route.cat)}</span>`;
+  }
+  if(route.view==='song'){
+    const s=songs.find(s=>s.id===route.songId);
+    if(s) h+=`<span class="sep">›</span><span>${esc(s.title)}</span>`;
+  }
+  if(route.view==='admin') h+=`<span class="sep">›</span><span>Admin</span>`;
+  bc.innerHTML=h;
+}
+
+/* ── Render principal ── */
+function render(){
+  renderBC();
+  const root=document.getElementById('root');
+  if(route.view==='home') root.innerHTML=renderHome();
+  else if(route.view==='category') root.innerHTML=renderCategory();
+  else if(route.view==='song') root.innerHTML=renderSong();
+  else if(route.view==='admin') root.innerHTML=adminOn?renderAdmin():renderLogin();
+}
+
+/* ── VISTAS ── */
+function renderHome(){
+  let h=`<p class="page-sub">Tiempo de la Misa</p><div class="cat-grid">`;
+  CATS.forEach((c,i)=>{
+    const cnt=songs.filter(s=>s.category===c.id).length;
+    h+=`<div class="cat-card" onclick="go('category','${c.id}')">
+      <div class="cat-num">${String(i+1).padStart(2,'0')}</div>
+      <div class="cat-name">${c.name}</div>
+      <div class="cat-count">${cnt} canto${cnt!==1?'s':''}</div>
+    </div>`;
+  });
+  return h+'</div>';
+}
+
+function renderCategory(){
+  const list=[...songs].filter(s=>s.category===route.cat).sort((a,b)=>a.title.localeCompare(b.title,'es'));
+  let h=`<h2 class="section-title">${catName(route.cat)}</h2>`;
+  if(!list.length) return h+`<p style="color:var(--muted);font-style:italic">No hay cantos en esta categoría todavía.</p>`;
+  h+=`<ul class="song-list">`;
+  for(const s of list)
+    h+=`<li class="song-item" onclick="go('song','${s.category}','${s.id}')">
+      <span class="song-item-title">${esc(s.title)}</span>
+      <span class="song-item-arr">›</span>
+    </li>`;
+  return h+'</ul>';
+}
+
+function renderSong(){
+  const s=songs.find(s=>s.id===route.songId);
+  if(!s) return '<p>Canto no encontrado.</p>';
+  const tv = tr===0?'Original': tr>0?`+${tr} semitonos`:`${tr} semitonos`;
+  return `
+    <div class="song-hdr">
+      <h2>${esc(s.title)}</h2>
+      <div class="s-cat">${catName(s.category)}</div>
+    </div>
+    <div class="two-col">
+      <div>
+        <div class="col-label">Solo Letra</div>
+        ${renderLyrics(s.content,false,tr)}
+      </div>
+      <div>
+        <div class="col-label">Letra y Acordes</div>
+        ${renderLyrics(s.content,true,tr)}
+        <div class="transp-box">
+          <span class="transp-lbl">Transporte:</span>
+          <button class="btn btn-sm" onclick="chTr(-1)">− ½ tono</button>
+          <span class="transp-val">${tv}</span>
+          <button class="btn btn-sm" onclick="chTr(1)">+ ½ tono</button>
+          <button class="btn btn-sm" onclick="resetTr()">Reiniciar</button>
+        </div>
+      </div>
+    </div>`;
+}
+
+function chTr(d){ tr+=d; render(); }
+function resetTr(){ tr=0; render(); }
+
+/* ── ADMIN LOGIN ── */
+function renderLogin(){
+  return `<div class="admin-login-wrap">
+    <h2>Acceso Admin</h2>
+    <div class="fg"><label>Contraseña</label>
+      <input type="password" id="apwd" onkeydown="if(event.key==='Enter')tryLogin()">
+    </div>
+    <button class="btn btn-pri" style="width:100%" onclick="tryLogin()">Entrar</button>
+    <p class="login-err" id="lerr">Contraseña incorrecta</p>
+  </div>`;
+}
+function tryLogin(){
+  if(document.getElementById('apwd')?.value===PASS){adminOn=true;render();}
+  else{ const e=document.getElementById('lerr'); if(e)e.style.display='block'; }
+}
+
+/* ── ADMIN PANEL ── */
+function renderAdmin(){
+  const sorted=[...songs].sort((a,b)=>{
+    const d=catIdx(a.category)-catIdx(b.category);
+    return d!==0?d:a.title.localeCompare(b.title,'es');
+  });
+  let h=`<div class="admin-toolbar">
+    <h2>Panel de Admin</h2>
+    <div style="display:flex;gap:.4rem;flex-wrap:wrap">
+      <button class="btn btn-pri" onclick="openModal()">+ Agregar canto</button>
+      <button class="btn" onclick="showExport()">Exportar</button>
+      <button class="btn" onclick="adminOn=false;go('home')">Cerrar sesión</button>
+    </div>
+  </div>
+  <div class="notice">Los cambios se guardan en <strong>este navegador</strong>. Para que todos los vean, usa "Exportar" y actualiza el archivo en GitHub.</div>`;
+  if(!sorted.length) return h+`<p style="color:var(--muted);font-style:italic;padding:.5rem">Sin cantos todavía.</p>`;
+  for(const s of sorted)
+    h+=`<div class="admin-row">
+      <span class="admin-row-title">${esc(s.title)}</span>
+      <span class="admin-row-cat">${catName(s.category)}</span>
+      <button class="btn btn-sm" onclick="openModal('${s.id}')">Editar</button>
+      <button class="btn btn-sm btn-del" onclick="delSong('${s.id}')">Eliminar</button>
+    </div>`;
+  return h;
+}
+
+/* ── MODAL EDITAR/AGREGAR ── */
+function openModal(sid){
+  const s=sid?songs.find(s=>s.id===sid):null;
+  let opts=CATS.map(c=>`<option value="${c.id}"${s?.category===c.id?' selected':''}>${c.name}</option>`).join('');
+  document.getElementById('modal').innerHTML=`
+    <div class="overlay" onclick="if(event.target===this)closeModal()">
+      <div class="modal">
+        <h3>${s?'Editar canto':'Nuevo canto'}</h3>
+        <div class="fg"><label>Título</label>
+          <input type="text" id="ft" value="${s?esc(s.title):''}">
+        </div>
+        <div class="fg"><label>Categoría</label>
+          <select id="fc">${opts}</select>
+        </div>
+        <div class="fg">
+          <label>Letra y acordes</label>
+          <textarea id="fco" placeholder="[Em]Ejemplo de [G]letra aquí..."></textarea>
+          <p class="hint">Acordes: escribe <strong>[Em]</strong> justo antes de la sílaba donde cambia el acorde. Línea en negrita: empieza la línea con <strong>*</strong>. Línea en blanco = nueva estrofa.</p>
+        </div>
+        <div class="modal-actions">
+          <button class="btn" onclick="closeModal()">Cancelar</button>
+          <button class="btn btn-pri" onclick="saveSong('${sid||''}')">Guardar</button>
+        </div>
+      </div>
+    </div>`;
+  if(s) document.getElementById('fco').value=s.content;
+}
+
+function saveSong(sid){
+  const title=(document.getElementById('ft').value||'').trim();
+  const cat=document.getElementById('fc').value;
+  const content=document.getElementById('fco').value;
+  if(!title){alert('El título es requerido.');return;}
+  if(sid){
+    const s=songs.find(s=>s.id===sid);
+    if(s){s.title=title;s.category=cat;s.content=content;}
+  } else {
+    songs.push({id:Date.now().toString(), title, category:cat, content});
+  }
+  save(songs);
+  closeModal();
+  render();
+}
+
+function delSong(sid){
+  if(!confirm('¿Eliminar este canto?'))return;
+  songs=songs.filter(s=>s.id!==sid);
+  save(songs);
+  render();
+}
+
+function closeModal(){ document.getElementById('modal').innerHTML=''; }
+
+/* ── EXPORTAR ── */
+function showExport(){
+  const json=JSON.stringify(songs,null,2);
+  document.getElementById('modal').innerHTML=`
+    <div class="overlay" onclick="if(event.target===this)closeModal()">
+      <div class="modal">
+        <h3>Exportar datos</h3>
+        <p style="font-size:.92rem;color:var(--muted);margin-bottom:.6rem">
+          Copia este JSON, reemplaza el contenido de <code>SEED</code> en el archivo HTML de GitHub,
+          y sube el número de <code>VERSION</code> (de <code>"v1"</code> a <code>"v2"</code>, etc.)
+          para que todos los usuarios reciban los cantos actualizados.
+        </p>
+        <div class="export-box" id="expbox">${esc(json)}</div>
+        <div class="modal-actions">
+          <button class="btn" onclick="copyExp()">Copiar</button>
+          <button class="btn btn-pri" onclick="closeModal()">Cerrar</button>
+        </div>
+      </div>
+    </div>`;
+}
+
+function copyExp(){
+  navigator.clipboard.writeText(JSON.stringify(songs,null,2))
+    .then(()=>alert('¡Copiado al portapapeles!'))
+    .catch(()=>alert('Selecciona el texto y cópialo manualmente.'));
+}
+
+/* ── INICIO ── */
+render();
+</script>
+</body>
+</html>
