@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Cancionero Parroquial</title>
+<title>Cancionero Coro Merkaba</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
 <style>
 :root {
-  --bg:       #faf6f0;
-  --bg2:      #fff9f3;
-  --text:     #2a1a0e;
+  --bg:       #FFE8E8;
+  --bg2:      #FFC9C9;
+  --text:     #e8b133;
   --muted:    #7a5c4a;
   --chord:    #8b1a1a;
   --accent:   #b5830d;
@@ -36,7 +36,7 @@ header{background:var(--text);color:var(--bg);padding:.85rem 1.5rem;display:flex
 main{max-width:1080px;margin:0 auto;padding:1.8rem 1.5rem}
 
 /* ── HOME GRID ── */
-.page-sub{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:400;font-style:italic;color:var(--muted);text-align:center;margin-bottom:1.5rem}
+.page-sub{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:700;font-style:italic;color:var(--muted);text-align:center;margin-bottom:1.5rem}
 .cat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:1rem}
 .cat-card{background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:1.1rem;cursor:pointer;transition:transform .18s,box-shadow .18s,border-color .18s;text-align:center;box-shadow:0 1px 4px var(--shadow)}
 .cat-card:hover{transform:translateY(-3px);box-shadow:0 4px 14px var(--shadow);border-color:var(--accent)}
@@ -118,7 +118,7 @@ main{max-width:1080px;margin:0 auto;padding:1.8rem 1.5rem}
 <body>
 
 <header>
-  <div class="logo"><span>✝</span>Cancionero Parroquial</div>
+  <div class="logo"><span>🔥</span>Cancionero Coro Merkaba</div>
   <button class="btn-hdr" onclick="goAdmin()">Admin</button>
 </header>
 
@@ -264,7 +264,7 @@ function render(){
 
 /* ── VISTAS ── */
 function renderHome(){
-  let h=`<p class="page-sub">Tiempo de la Misa</p><div class="cat-grid">`;
+  let h=`<p class="page-sub">Tiempo de Misa</p><div class="cat-grid">`;
   CATS.forEach((c,i)=>{
     const cnt=songs.filter(s=>s.category===c.id).length;
     h+=`<div class="cat-card" onclick="go('category','${c.id}')">
@@ -300,7 +300,7 @@ function renderSong(){
     </div>
     <div class="two-col">
       <div>
-        <div class="col-label">Solo Letra</div>
+        <div class="col-label">Letra</div>
         ${renderLyrics(s.content,false,tr)}
       </div>
       <div>
