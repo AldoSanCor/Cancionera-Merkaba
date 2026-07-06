@@ -292,7 +292,7 @@ function renderCategory(){
 function renderSong(){
   const s=songs.find(s=>s.id===route.songId);
   if(!s) return '<p>Canto no encontrado.</p>';
-  const tv = tr===0?'Original': tr>0?`+${tr} semitonos`:`${tr} semitonos`;
+  const tv = tr===0?'Tono Original': tr>0?`+${tr} semitonos`:`${tr} semitonos`;
   return `
     <div class="song-hdr">
       <h2>${esc(s.title)}</h2>
