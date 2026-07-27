@@ -130,18 +130,210 @@ main{max-width:1080px;margin:0 auto;padding:1.8rem 1.5rem}
 /* ================================================================
    CONFIGURACIÓN — edita aquí para agregar cantos permanentemente
    ================================================================ */
-const VERSION = "v1";   // Cambia a "v2", "v3"... cada vez que actualices en GitHub
+const VERSION = "v2";   // Cambia a "v2", "v3"... cada vez que actualices en GitHub
 
 const SEED = [
   {
-    id: "1",
-    title: "Hacia ti morada Santa",
-    category: "entrada",
-    content: "[Em]Hacia ti morada [B7]Santa,\n[Em]hacia ti tierra del Salvador,\n[D]peregrinos [C]caminantes,\n[B7]vamos hacia ti.\n\n[Em]Venimos a tu mesa,\n[D]sellaremos tu Pacto,\n[C]comeremos tu carne,\n[B7]tu sangre nos limpiará."
+    "id": "1",
+    "title": "Hacia ti morada Santa",
+    "category": "entrada",
+    "content": "[Em]Hacia ti morada [B7]Santa,\n[Em]hacia ti tierra del Salvador,\n[D]peregrinos [C]caminantes,\n[B7]vamos hacia ti.\n\n[Em]Venimos a tu mesa,\n[D]sellaremos tu Pacto,\n[C]comeremos tu carne,\n[B7]tu sangre nos limpiará."
+  },
+  {
+    "id": "1779833967706",
+    "title": "En nombre del Padre",
+    "category": "entrada",
+    "content": "//[C]En nombre del Padre\nEn nombre del [F]hijo\nEn nombre del [C]Santo Espíritu[G]\nEstamos [C]aquí//\n\nPara alab[F]ar y agradec[G]er\nBende[Em]cir y glorif[Am]icar\nEstamos a[Dm]quí Señor[G]   a tu disposici[C]ón [C7]  \n\nPara alab[F]ar y agradec[G]er\nBende[Em]cir y glorif[Am]icar\nEstamos a[Dm]quí Señor  [G]\nDios Trino de am[C]or"
+  },
+  {
+    "id": "1779834877704",
+    "title": "Vienen con alegría",
+    "category": "entrada",
+    "content": "*[C]Vienen con alegría Señor\n*cantando vienen con alegría Señor, [C7]\n*/[F]los que cam[G]inan por la [C]vida Se[Am]ñor,\n*semb[Dm]rando tu [C]paz y am[G]or./\n\n[C]Vienen trayendo la espe[G]ranza\na un mundo cargado de ansied[C]ad\na un mundo que busca y que no alc[G]anza\ncaminos de amor y de amist[C]ad.\n\n[C]Vienen trayendo entre sus [G]manos\nesfuerzos de hermanos por la [C]paz,\ndeseos de un mundo más hu[G]mano\nque nacen del bien y la verd[C]ad\n"
+  },
+  {
+    "id": "1779835258662",
+    "title": "Vamos cantando al Señor",
+    "category": "entrada",
+    "content": "*/[C]Vamos cant[F]ando al Señ[C]or: \n*Él [F]es nuestra al[G]egrí[C]a/\n\nLa [C]luz de un nu[F]evo [C]día \nvenci[F]ó a la oscurid[C]ad: \nque [Dm]bri[G]lle en nuestras [C]almas \nla [Am]luz de la verd[G]ad. \n\nLa [C]roca [F]que nos [C]salva \nes [F]Cristo, nuestro Di[C]os: \nll[Dm]egu[G]emos dando [C]gracias \na [Am]nuestro Reden[G]tor."
+  },
+  {
+    "id": "1779835968713",
+    "title": "Alegre la mañana",
+    "category": "entrada",
+    "content": "*[E]Alegre la ma[C#m]ñana, que nos [A]habla de [E]ti\n*A[B7]legre la ma[E]ñana\n\n[E]En nombre del Dios [C#m]Padre, del [A]Hijo y del Es[E]píritu,\nS[C#m]alimos de la [F#m]noche y es[B7]trenamos la au[E]rora,\nSaludamos el [A]gozo de la luz que nos [E]llega,\nResuci[B7]tada y resucit[E]adora\n\n[E]Tu mano acerca el f[C#m]uego a [A]la sombría [E]tierra\nY el [C#m]rostro de las [F#m]cosas se a[B7]legra en tu pre[E]sencia\nSilabeas el [A]alba igual que una pa[E]labra\nTú pronuncias el [B7]mar como sen[E]tencia"
+  },
+  {
+    "id": "1779920909528",
+    "title": "Iglesia Peregrina",
+    "category": "entrada",
+    "content": "[C]Todos unidos for[F]mando un solo [C]cuerpo\nun [Dm]pueblo que en la Pascua naci[G]ó\n[C]miembros de Cristo en [F]sangre redi[C]midos\nIg[F]lesia Pereg[G]rina de D[C]ios\n\n[C]Vive en nosotros la [F]fuerza del Es[C]píritu\nQue el [Dm]Hijo desde el Padre envi[G]ó\n[C]Él nos empuja nos g[F]uía y ali[C]menta\nIg[F]lesia Pereg[G]rina de D[C]ios\n\n*[G]Somos en la tierra se[C]milla de otro reino\n*[F]somos test[Dm]imonio de a[G]mor\n*/[F]Paz para las guerras y [C]luz entre las sombras\n*Ig[F]lesia Pereg[G]rina de D[C]ios/"
+  },
+  {
+    "id": "1779921396337",
+    "title": "Juntos cantando la alegría",
+    "category": "entrada",
+    "content": "*[D]Juntos cant[A]ando la alegr[D]ía\n*De [G]vernos unidos en la f[D]e y el am[A]or\n*[D]Juntos sinti[A]endo en nuestras [D]vidas\n*La al[G]egre pres[A]encia del Señ[D]or\n\n[D]Somos la iglesia pere[F#m]grina que Él fun[Bm]dó\n[G]Somos un pueblo que cam[A]ina sin ce[A7]sar\n[D]Entre cansancios y espe[F#m]ranzas hacia Di[Bm]os\nNuestro am[G]igo Jes[A]ús nos llevar[D]á\n"
+  },
+  {
+    "id": "1779922208226",
+    "title": "Venid fieles todos",
+    "category": "entrada",
+    "content": "Ven[E]id fieles t[B]odos[C#m] a Bel[A]én marc[E]hem[B]os\nDe [C#m]gozo triunf[B]antes y l[F#]lenos de am[B]or\nY al R[E]ey de los ci[A]elos hu[F#m]milde ver[B]emos\n\n*Ven[E]id y adoremos\n*Venid y adoremos\n*Ven[A]id y [F#m]ador[B]emos a Cr[A]isto [B]el Señ[E]or\n\nEn p[E]obre pes[B]ebre [C#m]yace r[A]ecli[E]nad[B]o\nAl [C#m]hombre ofreci[B]endo e[F#]ternal salvaci[B]ón\nEl S[E]anto Mes[A]ías el [F#m]verbo human[B]ado\n\nCant[E]ad jubil[B]osas, [C#m]célic[A]as cria[E]tur[B]as\nRes[C#m]uenen los ci[B]elos con [F#]nuestra canci[B]ón\nAl D[E]ios bondad[A]oso, G[F#]loria en las alt[B]uras"
+  },
+  {
+    "id": "1779922398216",
+    "title": "Caminaré",
+    "category": "entrada",
+    "content": "*/[Dm]Caminar[C]é  [Cm]en pres[Bb]encia d[C]el Señ[Dm]or/\n\n[Dm]Amo al Señor porque esc[C]ucha mi voz suplic[F]ante, [A]\nPorque inc[Dm]lina su o[C]ído hacia m[F]í,\nEl [Bb]día que lo inv[A]oco\n\nMe [Dm]envolvían en redes de la mu[C]erte,\nCaí en tristeza y en an[Dm]gustia,\nInvoqué el n[C]ombre del Señ[F]or:\n¡Señor, [Bb]salva mi v[A]ida!"
+  },
+  {
+    "id": "1780006246719",
+    "title": "Jesús está entre nosotros",
+    "category": "entrada",
+    "content": "*J[C]esús es[G]tá [F]entre nos[C]otr[G]os,\n*[C]Él vive [Em]hoy [F]y su Espíritu a todos d[G]a.\n*J[C]esús, raz[G]ón d[F]e nuestra [C]vid[G]a, \n*[C]es el Se[Em]ñor n[F]os reúne en pueblo de am[G]or.\n\nC[Am]ambia nuestras v[F]idas con tu [C]fuerz[G]a.\nG[Am]uárdanos por si[F]empre en tu pr[C]esenci[G]a.\n[Am]Tú eres ver[Em]dad, T[F]ú eres la [C]paz. [G] \n\nR[Am]ompe las cad[F]enas que nos [C]atan[G].\nL[Am]lénanos de gr[F]acia en tu pa[C]labr[G]a.\n[Am]Gracias, Se[Em]ñor, gr[F]acias, Salva[C]dor. [G] "
+  },
+  {
+    "id": "1780007444447",
+    "title": "En el Nombre de Dios",
+    "category": "entrada",
+    "content": "Aquí est[C]amos Señor, en tu [Am]casa otra vez,\nqué alegr[F]ía volv[G]erte a encontr[C]ar.\nVamos a compartir y expre[Am]sar nuestra fe\ncomo herm[F]anos en t[G]orno al alt[C]ar.\n\n*En el n[F]ombre de Di[G]os vamos [Em]a celeb[Am]rar\n*el mis[Dm]terio de l[G]a salvaci[C]ón.\n*El Señ[F]or nos dar[G]á su pa[Em]labra y su [Am]pan\n*es la f[Dm]iesta del pu[G]eblo de Di[C]os\n\nPartir[C]emos tu pan, signo [Am]de comunión,\nbeber[F]emos tu v[G]ino de am[C]or;\ny a la vez sellarás con no[Am]sotros Señor\nuna ali[F]anza que vi[G]ene de Di[C]os."
+  },
+  {
+    "id": "1780007937695",
+    "title": "Iglesia soy",
+    "category": "entrada",
+    "content": "[C]Iglesia soy y Tú tambi[F]én,\nen el Baut[G]ismo renacimos, a una v[C]ida singular.\nY al confirmar hoy nuestra f[F]e,\nlo procl[G]amamos compartiendo el mismo p[C]an.\n\n*[C7]  No vayas tr[F]iste en soled[G]ad,\n*ven con nos[C]otros y ve[Am]rás\n*a los her[Dm]manos camin[G]ando en el am[C]or. [C7] \n*Ven con nos[F]otros y ser[G]ás,\n*en la fam[C]ilia un hijo [Am]más;\n*iremos [Dm]juntos camin[G]ando en el am[C]or.\n\n[C]Yo la veré envejec[F]er;\npero a mi m[G]adre con arrugas y def[C]ectos la querré.\nLa quiero más, pues sé muy bi[F]en\nque ha envejec[G]ido sin dejarme de quer[C]er."
+  },
+  {
+    "id": "1780008583823",
+    "title": "Nos has llamado al desierto",
+    "category": "entrada",
+    "content": "*Nos [Dm]has llamado al desierto, \n*se[Gm]ñor de l[C]a liber[Dm]tad,\n*y es[D#]tá el coraz[A]ón ab[Dm]ierto\n*a la [Gm]luz de tu verd[A]ad.\n*Su[Dm]bimos con esperanza \n*la esca[Gm]lada[C] cuaresm[F]al,\n*el p[D#]ueblo de Di[A]os av[Dm]anza\n*[Gm]hasta la c[A]umbre pasc[Dm]ual.\n\nTu p[Dm]ueblo, Señ[C]or, ca[Dm]mina\ndesde la aur[C]ora al o[Dm]caso:\na tu P[F]ascua se encamina\ny te s[C]igue [A7]  paso a [Dm]paso.\n\nSe[Dm]ñor, te r[C]econo[Dm]cemos\ny tu Pal[C]abra escuc[Dm]hamos,\ntus cam[F]inos seguiremos\ny tu l[C]ey de amor  [A7] canta[Dm]remos.\n"
+  },
+  {
+    "id": "1781531012210",
+    "title": "Pueblo de Reyes",
+    "category": "entrada",
+    "content": "*P[G]ueblo de [Bm]reyes, asamblea [Em]santa\n*P[D]ueblo sacerdot[G]al, pueblo de Di[C]os\n*Bend[D]ice a t[C]u Señ[G]or\n\n[G]Te cantamos, oh, [Bm]Hijo a[Em]mado del [C]Padre\nTe alab[D]amos, e[Em]terna pal[Bm]abra sal[D]ida de D[Em]ios\nTe can[G]tamos, oh, [Bm]Hijo de la [Em]Virgen Mar[C]ía\nTe alab[D]amos, oh, C[Em]risto nuestro herm[Bm]ano\nNu[D]estro Salvad[Em]or\n\nTe cantamos a Ti, esplendor de la gloria\nTe alabamos, estrella radiante que anuncias el día\nTe cantamos, oh, luz que iluminas nuestras sombras\nTe alabamos, antorcha de la nueva Jerusalén\n\nTe cantamos, Mesías, que anunciaron los profetas\nTe alabamos, oh, hijo de Abraham e hijo de David\nTe cantamos, Mesías, esperado por los pobres\nTe alabamos, oh, Cristo, nuestro rey de humilde corazón"
+  },
+  {
+    "id": "1781531896707",
+    "title": "Esta es tu fiesta, Señor",
+    "category": "entrada",
+    "content": "[G7]Esta es tu fi[C]esta, Señor, es nuestra fiesta,\nEsta es la fi[F]esta en el día del Señ[G]or.\n[G7]Esta es tu fi[C]esta, Señor, es nuestra fiesta,\nEsta es la fi[F]esta que nos [G]une en el am[C]or.\n\n*[C7]Y cantar[F]emos nuestro gozo y alegr[C]ía,\n*de estar un[G]idos en un mismo coraz[C]ón,\n*c[C7]omulgar[F]emos tu palabra porque es v[C]ida,\n*comulgar[G]emos con tu pan porque es am[C]or.\n\n[G7]Esta es tu m[C]esa, Señor, es nuestra mesa,\nEsta es la m[F]esa del banquete del Señ[G]or.\n[G7]Esta es tu m[C]esa, Señor, es nuestra mesa,\nEsta es la m[F]esa que nos [G]une en el am[C]or."
+  },
+  {
+    "id": "1781532571059",
+    "title": "Los niños hebreos",
+    "category": "entrada",
+    "content": "[Dm]Los niños hebreos,\nllevando [C]ramos de ol[F]ivo,\nsal[A7]ieron al encuentro del Se[Dm]ñor acla[A7]mando:\n“Ho[Dm]sanna en el cielo, Ho[F]sanna en el cielo,\nHo[Gm]sanna en el [A]ciel[Dm]o”.\n\nPor[Dm]tones ab[Gm]rid los din[Dm]teles,\nque s[Dm]e alcen las p[Gm]uertas e[Dm]ternas,\nva a entr[F]ar el Rey de la G[Dm]loria,\nHéroe vale[Bb]roso y Dios de Isra[A7]el."
+  },
+  {
+    "id": "1781533726491",
+    "title": "Venimos hoy a tu Altar",
+    "category": "entrada",
+    "content": "*V[E]enimos hoy a tu al[C#m]tar\n*a cant[A]arte Se[B7]ñor,\n*/pues t[A]ú eres la alegr[E]ía\n*[B7]de nuestro coraz[E]ón./\n\nT[E]ú hiciste los c[C#m]ielos.\nLos llenas de estr[A]ellas, de luz y ca[B7]lor.\nT[E]ú pintaste la au[C#m]rora,\nHiciste las n[A]ubes, las puestas de [B7]sol\n\nT[E]u creaste la [C#m]risa,\nLa paz y la d[A]icha, la felici[B7]dad.\nT[E]ú al darnos la [C#m]vida\nNos das tus riqu[A]ezas, tu eterna amis[B7]tad."
+  },
+  {
+    "id": "1781534186882",
+    "title": "Vamos caminando a la casa del Señor",
+    "category": "entrada",
+    "content": "[C]Vamos cami[Em]nando\na la c[F]asa del Señ[G]or\nj[C]untos como her[Em]manos\nen un gr[C]an lazo de am[G]or\n\nPorque Cr[F]isto ha demostr[G]ado\ncon sus [Em]obras la verd[Am]ad\nporque s[F]olo un buen ap[G]óstol\nsentir[C]á felici[C7]dad\n\nPorque el m[F]undo neces[G]ita\nmás a[Em]mor y liber[Am]tad\nes por [F]eso que ven[G]imos\na cant[F]ar a Di[C]os"
+  },
+  {
+    "id": "1781793739196",
+    "title": "Aleluya, el Señor resucitó",
+    "category": "entrada",
+    "content": "*¡[E]Aleluya, alel[A]uya!\n*Can[B7]temos alegres h[E]oy\n*¡[E]Aleluya, alel[A]uya!\n*[B7]El Señor resucit[E]ó  [E7] \n\nCantando el ci[A]elo se alegra la ti[E]erra\nPorque el Se[B7]ñor resucit[E]ó   [E7] \nTodos cant[A]amos y alegres viv[E]imos\nPorque el Se[B7]ñor resucit[E]ó\n\nLa paz del m[A]undo por fin ha lleg[E]ado\nPorque el Se[B7]ñor resucit[E]ó   [E7] \nEl gran Cord[A]ero su vida ha entreg[E]ado\nPorque el Se[B7]ñor resucit[E]ó"
+  },
+  {
+    "id": "1781794360861",
+    "title": "Vamos al Altar",
+    "category": "entrada",
+    "content": "V[E]amos, [C#m]vamos, [F#m]vamos, \n[B7]vamos al Alt[E]ar, al [C#m]altar de [F#m]Dios\n[B7]que en Cristo t[E]enemos nue[C#m]stra ale[F#m]gría\ny [B7]nuestra juvent[E]ud.\nLar[C#m]alalara[F#m]la, la[B7]ralaral[E]ala\n\nCristo, Cristo, Cristo nos ofrecerá,\nnos ofrecerá su verdad y vida\ncon su palabra cantaremos ya.\nLa, la, la, la, la…\n\nGloria, gloria, gloria al Dios del amor.\nAl Dios del amor que nos ha reunido\nen torno a su mesa para ser nuestro pan.\nLa, la, la, la, la…"
+  },
+  {
+    "id": "1781794832291",
+    "title": "01. Señor ten piedad de nosotros",
+    "category": "piedad",
+    "content": "S[C]eñor ten pied[G]ad de no[Am]sotros,\nS[F]eñor Jesu[Dm]cristo ten pied[G]ad\nS[C]eñor ten pied[E]ad de no[Am]sotros,\nS[F]eñor Jesucr[G]isto ten pied[C]ad\n\nCr[C]isto ten pied[G]ad de no[Am]sotros,\nS[F]eñor Jesu[Dm]cristo ten pied[G]ad\nCr[C]isto ten pied[E]ad de no[Am]sotros,\nS[F]eñor Jesucr[G]isto ten pied[C]ad  [A] \n\nS[D]eñor ten pied[A]ad de no[Bm]sotros,\nS[G]eñor Jesu[Em]cristo ten pied[A]ad\nS[D]eñor ten pie[F#]dad de no[Bm]sotros,\nS[G]eñor Jesucr[A]isto ten pied[D]ad"
+  },
+  {
+    "id": "1781795259268",
+    "title": "02. Señor ten piedad",
+    "category": "piedad",
+    "content": "[Bm] Seeeñ[Em]or ten pied[A]ad\nSeeeñ[D]or t[A]en pie[Bm]dad\nSeeeñ[Em]or ten pie[F#]dad\nTen pie[Bm]dad\n\n[Bm]Cristo ten pie[Em]dad, ten piedad, ten pied[A]ad\nCristo ten pied[D]ad, ten pied[A]ad, ten pie[Bm]dad\nCristo ten pie[Em]dad, ten piedad, ten pie[F#]dad\nTen pie[Bm]dad"
+  },
+  {
+    "id": "1781795595516",
+    "title": "03. Ten piedad, soy pecador",
+    "category": "piedad",
+    "content": "//[Am]Ten piedad, Se[Dm]ñor, ten pie[Am]dad\nsoy pecad[F]or, t[G]en pie[Am]dad//\n\n//Y de m[F]í, Cristo, apiádate\ncontra t[G]i yo peq[Am]ué//\n\nTen pie[Am]dad, Se[Dm]ñor, ten pie[Am]dad…"
+  },
+  {
+    "id": "1781796289869",
+    "title": "04. Señor, Señor, piedad piedad",
+    "category": "piedad",
+    "content": "Capo en 3er traste\n\n//Se[Bm]ñor, Señor, pie[F#]dad, pie[Bm]dad//\nSe[Em]ñor, Señor[Bm], Señor\nPie[F#]dad, pie[Bm]dad, pie[F#]dad, Se[Bm]ñor  [B7] \n\n//C[Em]risto, piedad, piedad//\nCr[C]isto, [Am]Crist[Em]o,\nPied[B]ad, pie[Em]dad, pied[B]ad, Se[Em]ñor   [F#] \n\nSe[Bm]ñor, Señor…"
+  },
+  {
+    "id": "1781796813613",
+    "title": "05. Señor ten piedad",
+    "category": "piedad",
+    "content": "Se[Am]ñor t[G]en pie[Am]dad\n(Se[Am]ñor t[G]en pie[Am]dad)\n\nCr[C]isto t[F]en pie[Am]dad\n(Cr[C]isto t[F]en pie[Am]dad)\n\nSe[Am]ñor t[G]en pie[Am]dad\n(Se[Am]ñor t[G]en pie[Am]dad)"
+  },
+  {
+    "id": "1781797093589",
+    "title": "06. Señor, Señor ten piedad",
+    "category": "piedad",
+    "content": "//S[C]eñor, Señor, ten piedad,\nten piedad de nos[G]otros/[C]/\n\n//Cr[F]isto, Cristo, ten pied[C]ad,\nten pied[G]ad de nos[C]otros//\n\nS[C]eñor, Señor, ten piedad…"
+  },
+  {
+    "id": "1781797162708",
+    "title": "07. Señor ten piedad de nosotros (Cantaré)",
+    "category": "piedad",
+    "content": "//Señor, ten piedad de nosootros//\n\n//Cristo ten piedad  (//ten piedad de nosotros//)\nde nosotros//\n\n//Señor, ten piedad      (//Señor, ten piedad\nde nosotros//                 de nosotros//"
+  },
+  {
+    "id": "1783354557319",
+    "title": "08. Señor ten piedad",
+    "category": "piedad",
+    "content": "/Se[Em]ñor ten pie[E7]dad de no[Am]sotros,\nSeñ[D7]or ten pied[G]ad/   [B7] \n\n/C[Em]risto ten piedad de nos[D7]otros,\nC[Am]risto ten pied[B7]ad/\n\n/Se[Em]ñor ten pie[E7]dad de no[Am]sotros,\nSeñ[D7]or ten pied[G]ad/   [B7] \n"
+  },
+  {
+    "id": "1783363677277",
+    "title": "09. El Agua del Señor",
+    "category": "piedad",
+    "content": "*/[C]El agua del Señor sa[Am]nó mi enfermedad\n*el [F]agua del Señor Jes[G]ús/\n\nEl que qui[F]era y tenga s[C]ed,\nque v[G]enga y beba gr[C]atis,\nel que qu[F]iera y tenga s[C]ed,\nbeba el [G]agua de la v[C]ida.\n\nEl que b[F]eba de esta [C]agua,\njam[G]ás tendrá s[C]ed,\nel que b[F]eba de esta [C]agua,\njam[G]ás tendrá s[C]ed.\n\nSobre t[F]i derramar[C]é\nel [G]agua que es mi v[C]ida\ny tu c[F]orazón de pi[C]edra\nen am[G]or transformar[C]é.\n\nTe doy gr[F]acias, tú me c[C]ambias,\ntú me ll[G]enas, me has salv[C]ado,\nte doy gr[F]acias, tú me c[C]ambias,\ntú me ll[G]enas, me has salv[C]ado"
+  },
+  {
+    "id": "1783364366499",
+    "title": "01. Gloria de los niños",
+    "category": "gloria",
+    "content": "Gl[A]oria, Gloria, Gl[D]oria al Señ[A]or\nGl[D]oria en el ci[A]elo,\n[D]paz en la [E]tierr[A]a.\n\n[A]Te alabamos Señor,\n[D]te bendecim[A]os,\n[D]te adoramos, oh [A]Padre,\n[F#m]Dios y Rey celesti[E]al.\n\n[A]Eres Cordero de Dios,\n[D]Hijo del Padr[A]e,\n[D]tú nos perdonas y s[A]alvas\n[F#m]nos ofreces tu am[E]or.\n\n[A]Tú solo Santo y Señor,\n[D]tú Jesucrist[A]o\n[D]con el Espíritu S[A]anto\n[F#m]en la Gloria de Di[E]os"
+  },
+  {
+    "id": "1783979443792",
+    "title": "02. Gloria al Señor",
+    "category": "gloria",
+    "content": "*Gl[C]oria al Señor,\n*que r[G]eina en el c[C]iel[7]o\n*//[F]y en la tierra p[C]az\n*a los h[G]ombres que ama [C]Él//\n\n[C]Señor te ala[G]bamo[C]s,\nSeñ[G]or te bendec[C]imo[7]s,\n//[F]todos te ador[C]amos,\ngr[G]acias por tu Gl[C]oria//\n\n[C]Tú eres el Cor[C]dero[C],\nque qu[G]ita el pec[C]ado,[7]\n//[F]ten piedad de nos[C]otros\ny esc[G]ucha nuestra oraci[C]ón//\n\n[C]Tú solo eres [G]Sant[C]o,\ntú s[G]olo el alt[C]ísimo[7]\n//con [F]el Espíritu S[C]anto\nen la Gl[G]oria de Dios P[C]adre//"
+  },
+  {
+    "id": "1783980912307",
+    "title": "03. Gloria del Pueblo Inmigrante",
+    "category": "gloria",
+    "content": "*/G[Am]loria a Dios en el c[E]ielo\n*y en la tierra [Am]paz\n*a los h[C]ombres que [G]ama el S[F]eñ[E]or/ [Am] \n\n[G]Por tu inmensa Gloria te alab[C]amos,\nte bende[E]cimos, te ador[Am]amos, te glorifi[E]camos,\nte damos gr[F]acias, Señor Di[G]os, Rey celesti[C]al,\nDios [Dm]Padre todopoder[E]oso\n\n[G]Señor Hijo único, Jesucr[C]isto,\nSeñor D[E]ios, Cordero de [Am]Dios, Hijo del P[E]adre,\ntú que qu[F]itas el pec[D]ado del m[G]undo,\nten pied[E]ad de no[Am]sotros,\ntú que qu[F]itas el pec[D]ado del m[G]undo, \nat[E]iende nuestra [Am]súplica,\ntú que est[F]ás sent[G]ado a la der[C]echa del [Am]Padre,\nten pie[Dm]dad de nos[E]otros.\n\n*-CORO-\n\n[G]Porque solo tú eres S[C]anto,\nsólo t[E]ú Señor, sólo tú Al[Am]tísimo, Jesucr[E]isto,\ncon el Esp[F]íritu S[G]anto\nen la Gl[C]oria de Dios [Am]Padre.\nA[Dm]mén. Am[E]én."
+  },
+  {
+    "id": "1783982939655",
+    "title": "04. Gloria a Dios en el cielo",
+    "category": "gloria",
+    "content": "-Francisco Palazón-\n\n*[C]Gloria a D[Am]ios en el c[Em]ielo\n*[Dm]y en la tierra p[G]az\n*a los h[C]ombres que [G]ama el Señ[C]or\n\n[C]Por tu inmensa Gloria te alab[F]amo[C]s,\n[G]te bendecimos, te ador[C]amos,\n[Em]te glorificamos, te [Am]damos [Dm]gracia[G]s\n\n[C]Señor Dios, Rey celestial,\nDios Padre todopoder[F]oso[C] \n[G]Señor Hijo único, Jesucr[C]isto,\n[Em]Señor Dios, Cordero de Dios, [Am]Hijo del[Dm] Padr[G]e\n\n[C]Tú que quitas el pecado del mundo,\nten piedad de no[F]sotro[C]s,\n[G]tú que quitas el pecado del mundo,\natiende nuestra s[C]úplica,\n[Em]tú que estás sentado a la derecha del Padre,\nten pie[Am]dad de no[Dm]sotro[G]s.\n\n[C]Porque solo tú eres Santo, sólo t[F]ú Señ[C]or, \ns[G]ólo tú altísimo, Jesucr[C]isto,\n[Em]con el Espíritu Santo \nen la G[Am]loria de Dios [Dm]Padre[G].\n\n[F]A-[C]a-[G]a-m[C]én."
   }
 ];
 
-const PASS = "coro2024";   /* ← cambia esta contraseña */
+const PASS = "coro2026";   /* ← cambia esta contraseña */
 
 /* ================================================================ */
 
@@ -296,7 +488,7 @@ function renderSong(){
   return `
     <div class="song-hdr">
       <h2>${esc(s.title)}</h2>
-      <div class="s-cat">${catName(s.category)}${s.author?` · <span style="font-style:italic">${esc(s.author)}</span>`:''}</div>
+      <div class="s-cat">${catName(s.category)}</div>
     </div>
     <div class="two-col">
       <div>
@@ -307,10 +499,8 @@ function renderSong(){
         <div class="col-label">Letra y Acordes</div>
         ${renderLyrics(s.content,true,tr)}
         <div class="transp-box">
-          <span class="transp-lbl">Transporte:</span>
-          <button class="btn btn-sm" onclick="chTr(-1)">− ½ tono</button>
-          <span class="transp-val">${tv}</span>
-          <button class="btn btn-sm" onclick="chTr(1)">+ ½ tono</button>
+          <button class="btn btn-sm" onclick="chTr(-1)">-½</button>
+          <button class="btn btn-sm" onclick="chTr(1)">+½</button>
           <button class="btn btn-sm" onclick="resetTr()">Reiniciar</button>
         </div>
       </div>
@@ -376,9 +566,6 @@ function openModal(sid){
         <div class="fg"><label>Categoría</label>
           <select id="fc">${opts}</select>
         </div>
-        <div class="fg"><label>Autor <span style="font-size:.82rem;color:var(--muted)">(opcional)</span></label>
-          <input type="text" id="fau" value="${s?.author?esc(s.author):''}">
-        </div>
         <div class="fg">
           <label>Letra y acordes</label>
           <textarea id="fco" placeholder="[Em]Ejemplo de [G]letra aquí..."></textarea>
@@ -397,13 +584,12 @@ function saveSong(sid){
   const title=(document.getElementById('ft').value||'').trim();
   const cat=document.getElementById('fc').value;
   const content=document.getElementById('fco').value;
-  const author=(document.getElementById('fau').value||'').trim();
   if(!title){alert('El título es requerido.');return;}
   if(sid){
     const s=songs.find(s=>s.id===sid);
-    if(s){s.title=title;s.category=cat;s.content=content;s.author=author;}
+    if(s){s.title=title;s.category=cat;s.content=content;}
   } else {
-    songs.push({id:Date.now().toString(), title, category:cat, content, author});
+    songs.push({id:Date.now().toString(), title, category:cat, content});
   }
   save(songs);
   closeModal();
