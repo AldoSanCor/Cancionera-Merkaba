@@ -488,7 +488,7 @@ function renderSong(){
   return `
     <div class="song-hdr">
       <h2>${esc(s.title)}</h2>
-      <div class="s-cat">${catName(s.category)}</div>
+      <div class="s-cat">${catName(s.category)}${s.author?` · <span style="font-style:italic">${esc(s.author)}</span>`:''}</div>
     </div>
     <div class="two-col">
       <div>
@@ -566,6 +566,9 @@ function openModal(sid){
         <div class="fg"><label>Categoría</label>
           <select id="fc">${opts}</select>
         </div>
+        <div class="fg"><label>Autor <span style="font-size:.82rem;color:var(--muted)">(opcional)</span></label>
+          <input type="text" id="fau" value="${s?.author?esc(s.author):''}">
+        </div>
         <div class="fg">
           <label>Letra y acordes</label>
           <textarea id="fco" placeholder="[Em]Ejemplo de [G]letra aquí..."></textarea>
@@ -584,12 +587,13 @@ function saveSong(sid){
   const title=(document.getElementById('ft').value||'').trim();
   const cat=document.getElementById('fc').value;
   const content=document.getElementById('fco').value;
+  const author=(document.getElementById('fau').value||'').trim();
   if(!title){alert('El título es requerido.');return;}
   if(sid){
     const s=songs.find(s=>s.id===sid);
-    if(s){s.title=title;s.category=cat;s.content=content;}
+    if(s){s.title=title;s.category=cat;s.content=content;s.author=author;}
   } else {
-    songs.push({id:Date.now().toString(), title, category:cat, content});
+    songs.push({id:Date.now().toString(), title, category:cat, content, author});
   }
   save(songs);
   closeModal();
