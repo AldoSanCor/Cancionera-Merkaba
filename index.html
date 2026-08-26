@@ -595,6 +595,8 @@ function renderSong(){
     <div class="song-hdr">
       <h2>${esc(s.title)}</h2>
       <div class="s-cat">${catName(s.category)}${s.author?` · <span style="font-style:italic">${esc(s.author)}</span>`:''}</div>
+      ${s.video?`<a href="${esc(s.video)}" target="_blank" class="btn btn-sm" style="display:inline-block;margin-top:.5rem;text-decoration:none">▶ Ver video</a>`:''}
+      <div style="display:none">
     </div>
     <div class="two-col">
       <div>
