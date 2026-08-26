@@ -703,7 +703,7 @@ function saveSong(sid){
     const s=songs.find(s=>s.id===sid);
     if(s){s.title=title;s.category=cat;s.content=content;s.author=author;s.video=video;}
   } else {
-    songs.push({id:Date.now().toString(), title, category:cat, content, author});
+    songs.push({id:Date.now().toString(), title, category:cat, content, author, video});
   }
   save(songs);
   closeModal();
