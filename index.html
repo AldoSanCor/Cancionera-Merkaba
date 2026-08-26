@@ -697,6 +697,7 @@ function saveSong(sid){
   const cat=document.getElementById('fc').value;
   const content=document.getElementById('fco').value;
   const author=(document.getElementById('fau').value||'').trim();
+  const video=(document.getElementById('fvid').value||'').trim();
   if(!title){alert('El título es requerido.');return;}
   if(sid){
     const s=songs.find(s=>s.id===sid);
