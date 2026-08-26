@@ -701,7 +701,7 @@ function saveSong(sid){
   if(!title){alert('El título es requerido.');return;}
   if(sid){
     const s=songs.find(s=>s.id===sid);
-    if(s){s.title=title;s.category=cat;s.content=content;s.author=author;}
+    if(s){s.title=title;s.category=cat;s.content=content;s.author=author;s.video=video;}
   } else {
     songs.push({id:Date.now().toString(), title, category:cat, content, author});
   }
