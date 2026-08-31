@@ -677,6 +677,9 @@ function openModal(sid){
         <div class="fg"><label>Autor <span style="font-size:.82rem;color:var(--muted)">(opcional)</span></label>
           <input type="text" id="fau" value="${s?.author?esc(s.author):''}">
         </div>
+        <div class="fg"><label>Comentario <span style="font-size:.82rem;color:var(--muted)">(opcional)</span></label>
+          <input type="text" id="fcom" value="${s?.comment?esc(s.comment):''}">
+        </div>
         <div class="fg"><label>Video <span style="font-size:.82rem;color:var(--muted)">(opcional, pega el link de YouTube)</span></label>
           <input type="text" id="fvid" value="${s?.video?esc(s.video):''}">
         </div>
