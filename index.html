@@ -703,10 +703,11 @@ function saveSong(sid){
   const content=document.getElementById('fco').value;
   const author=(document.getElementById('fau').value||'').trim();
   const video=(document.getElementById('fvid').value||'').trim();
+  const comment=(document.getElementById('fcom').value||'').trim();
   if(!title){alert('El título es requerido.');return;}
   if(sid){
     const s=songs.find(s=>s.id===sid);
-    if(s){s.title=title;s.category=cat;s.content=content;s.author=author;s.video=video;}
+    if(s){s.title=title;s.category=cat;s.content=content;s.author=author;s.video=video;s.comment=comment;}
   } else {
     songs.push({id:Date.now().toString(), title, category:cat, content, author, video});
   }
