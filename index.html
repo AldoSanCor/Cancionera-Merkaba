@@ -721,7 +721,8 @@ let route={view:'home', cat:null, songId:null};
 
 function go(view, cat, songId){
   route={view, cat:cat||null, songId:songId||null};
-  tr=0;
+  const found=songs.find(s=>s.id===songId);
+  tr=(found?.defaultTr)||0;
   render();
   window.scrollTo(0,0);
 }
@@ -873,6 +874,9 @@ function openModal(sid){
         <div class="fg"><label>Autor <span style="font-size:.82rem;color:var(--muted)">(opcional)</span></label>
           <input type="text" id="fau" value="${s?.author?esc(s.author):''}">
         </div>
+        <div class="fg"><label>Tonalidad predeterminada <span style="font-size:.82rem;color:var(--muted)">(semitonos: 0 = original, 2 = +2, -3 = -3)</span></label>
+          <input type="number" id="ftr" value="${s?.defaultTr?s.defaultTr:0}">
+        </div>
         <div class="fg"><label>Comentario <span style="font-size:.82rem;color:var(--muted)">(opcional)</span></label>
           <input type="text" id="fcom" value="${s?.comment?esc(s.comment):''}">
         </div>
@@ -900,12 +904,13 @@ function saveSong(sid){
   const author=(document.getElementById('fau').value||'').trim();
   const video=(document.getElementById('fvid').value||'').trim();
   const comment=(document.getElementById('fcom').value||'').trim();
+  const defaultTr=parseInt(document.getElementById('ftr').value)||0;
   if(!title){alert('El título es requerido.');return;}
   if(sid){
     const s=songs.find(s=>s.id===sid);
-    if(s){s.title=title;s.category=cat;s.content=content;s.author=author;s.video=video;s.comment=comment;}
+    if(s){s.title=title;s.category=cat;s.content=content;s.author=author;s.video=video;s.comment=comment;s.defaultTr=defaultTr;}
   } else {
-    songs.push({id:Date.now().toString(), title, category:cat, content, author, video, comment});
+    songs.push({id:Date.now().toString(), title, category:cat, content, author, video, comment, defaultTr});
   }
   save(songs);
   closeModal();
