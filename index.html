@@ -795,7 +795,7 @@ function renderSong(){
       ${s.comment?`<p style="margin-top:.5rem;font-style:italic;color:var(--muted);font-size:.95rem">💬 ${esc(s.comment)}</p>`:''}
       <div style="display:none">
     </div>
-    <div class="two-col">
+    <div class="two-col" id="two-col">
       <div>
         <div class="col-label">Solo Letra</div>
         ${renderLyrics(s.content,false,tr)}
@@ -821,8 +821,8 @@ function renderSong(){
 function chTr(d){ tr+=d; render(); }
 function resetTr(){ tr=0; render(); }
 let fontSize=100;
-function chFont(d){ fontSize=Math.min(Math.max(fontSize+(d*10),70),150); document.querySelector('.two-col').style.fontSize=fontSize+'%'; }
-function resetFont(){ fontSize=100; document.querySelector('.two-col').style.fontSize='100%'; }
+function chFont(d){ fontSize=Math.min(Math.max(fontSize+(d*10),70),150); document.getElementById('two-col').style.fontSize=fontSize+'%'; }
+function resetFont(){ fontSize=100; document.getElementById('two-col').style.fontSize='100%'; }
 
 /* ── ADMIN LOGIN ── */
 function renderLogin(){
