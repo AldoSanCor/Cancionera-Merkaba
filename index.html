@@ -865,7 +865,7 @@ function openModal(sid){
     <div class="overlay" onclick="if(event.target===this)closeModal()">
       <div class="modal" style="max-width:1000px;display:grid;grid-template-columns:1fr 1fr;gap:1.5rem">
         <h3 style="grid-column:1/-1">${s?'Editar canto':'Nuevo canto'}</h3>
-        <div><div class="fg"><label>Título</label>
+        <div style="display:flex;flex-direction:column;gap:.5rem"><div class="fg"><label>Título</label>
           <input type="text" id="ft" value="${s?esc(s.title):''}">
         </div>
         <div class="fg"><label>Categoría</label>
