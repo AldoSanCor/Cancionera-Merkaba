@@ -863,32 +863,38 @@ function openModal(sid){
   let opts=CATS.map(c=>`<option value="${c.id}"${s?.category===c.id?' selected':''}>${c.name}</option>`).join('');
   document.getElementById('modal').innerHTML=`
     <div class="overlay" onclick="if(event.target===this)closeModal()">
-      <div class="modal" style="max-width:1000px;display:grid;grid-template-columns:1fr 1fr;gap:1.5rem">
-        <h3 style="grid-column:1/-1">${s?'Editar canto':'Nuevo canto'}</h3>
-        <div style="display:flex;flex-direction:column;gap:.5rem"><div class="fg"><label>Título</label>
-          <input type="text" id="ft" value="${s?esc(s.title):''}">
+      <div class="modal" style="max-width:1000px">
+        <h3>${s?'Editar canto':'Nuevo canto'}</h3>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;align-items:start">
+          <div>
+            <div class="fg"><label>Título</label>
+              <input type="text" id="ft" value="${s?esc(s.title):''}">
+            </div>
+            <div class="fg"><label>Categoría</label>
+              <select id="fc">${opts}</select>
+            </div>
+            <div class="fg"><label>Autor <span style="font-size:.82rem;color:var(--muted)">(opcional)</span></label>
+              <input type="text" id="fau" value="${s?.author?esc(s.author):''}">
+            </div>
+            <div class="fg"><label>Tonalidad predeterminada <span style="font-size:.82rem;color:var(--muted)">(semitonos: 0 = original, 2 = +2, -3 = -3)</span></label>
+              <input type="number" id="ftr" value="${s?.defaultTr?s.defaultTr:0}">
+            </div>
+            <div class="fg"><label>Comentario <span style="font-size:.82rem;color:var(--muted)">(opcional)</span></label>
+              <input type="text" id="fcom" value="${s?.comment?esc(s.comment):''}">
+            </div>
+            <div class="fg"><label>Video <span style="font-size:.82rem;color:var(--muted)">(opcional, pega el link de YouTube)</span></label>
+              <input type="text" id="fvid" value="${s?.video?esc(s.video):''}">
+            </div>
+          </div>
+          <div>
+            <div class="fg">
+              <label>Letra y acordes</label>
+              <textarea id="fco" style="min-height:450px" placeholder="[Em]Ejemplo de [G]letra aquí..."></textarea>
+              <p class="hint">Acordes: escribe <strong>[Em]</strong> justo antes de la sílaba donde cambia el acorde. Línea en negrita: empieza la línea con <strong>*</strong>. Línea en blanco = nueva estrofa.</p>
+            </div>
+          </div>
         </div>
-        <div class="fg"><label>Categoría</label>
-          <select id="fc">${opts}</select>
-        </div>
-        <div class="fg"><label>Autor <span style="font-size:.82rem;color:var(--muted)">(opcional)</span></label>
-          <input type="text" id="fau" value="${s?.author?esc(s.author):''}">
-        </div>
-        <div class="fg"><label>Tonalidad predeterminada <span style="font-size:.82rem;color:var(--muted)">(semitonos: 0 = original, 2 = +2, -3 = -3)</span></label>
-          <input type="number" id="ftr" value="${s?.defaultTr?s.defaultTr:0}">
-        </div>
-        <div class="fg"><label>Comentario <span style="font-size:.82rem;color:var(--muted)">(opcional)</span></label>
-          <input type="text" id="fcom" value="${s?.comment?esc(s.comment):''}">
-        </div>
-        <div class="fg"><label>Video <span style="font-size:.82rem;color:var(--muted)">(opcional, pega el link de YouTube)</span></label>
-          <input type="text" id="fvid" value="${s?.video?esc(s.video):''}">
-        </div>
-        <div class="fg">
-          </div><label>Letra y acordes</label>
-          <textarea id="fco" style="min-height:450px" placeholder="[Em]Ejemplo de [G]letra aquí..."></textarea>
-          <p class="hint">Acordes: escribe <strong>[Em]</strong> justo antes de la sílaba donde cambia el acorde. Línea en negrita: empieza la línea con <strong>*</strong>. Línea en blanco = nueva estrofa.</p>
-        </div>
-        <div class="modal-actions" style="grid-column:1/-1">
+        <div class="modal-actions">
           <button class="btn" onclick="closeModal()">Cancelar</button>
           <button class="btn btn-pri" onclick="saveSong('${sid||''}')">Guardar</button>
         </div>
