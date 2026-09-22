@@ -803,6 +803,12 @@ function renderSong(){
       <div>
         <div class="col-label">Letra y Acordes</div>
         ${renderLyrics(s.content,true,tr)}
+        <div style="display:flex;align-items:center;gap:.6rem;margin-bottom:.6rem">
+          <span style="font-size:.88rem;color:var(--muted);font-family:'Cormorant Garamond',serif;font-weight:600">Tamaño:</span>
+          <button class="btn btn-sm" onclick="chFont(-1)">A−</button>
+          <button class="btn btn-sm" onclick="chFont(1)">A+</button>
+          <button class="btn btn-sm" onclick="resetFont()">Normal</button>
+        </div>
         <div class="transp-box">
           <button class="btn btn-sm" onclick="chTr(-1)">-½</button>
           <button class="btn btn-sm" onclick="chTr(1)">+½</button>
@@ -814,6 +820,9 @@ function renderSong(){
 
 function chTr(d){ tr+=d; render(); }
 function resetTr(){ tr=0; render(); }
+let fontSize=100;
+function chFont(d){ fontSize=Math.min(Math.max(fontSize+(d*10),70),150); document.querySelector('.two-col').style.fontSize=fontSize+'%'; }
+function resetFont(){ fontSize=100; document.querySelector('.two-col').style.fontSize='100%'; }
 
 /* ── ADMIN LOGIN ── */
 function renderLogin(){
