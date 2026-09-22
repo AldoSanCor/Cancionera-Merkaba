@@ -754,6 +754,7 @@ function render(){
   else if(route.view==='category') root.innerHTML=renderCategory();
   else if(route.view==='song') root.innerHTML=renderSong();
   else if(route.view==='admin') root.innerHTML=adminOn?renderAdmin():renderLogin();
+  applyFont();
 }
 
 /* ── VISTAS ── */
@@ -821,8 +822,9 @@ function renderSong(){
 function chTr(d){ tr+=d; render(); }
 function resetTr(){ tr=0; render(); }
 let fontSize=100;
-function chFont(d){ fontSize=Math.min(Math.max(fontSize+(d*10),70),150); document.getElementById('two-col').style.fontSize=fontSize+'%'; }
-function resetFont(){ fontSize=100; document.getElementById('two-col').style.fontSize='100%'; }
+function chFont(d){ fontSize=Math.min(Math.max(fontSize+(d*10),70),150); applyFont(); }
+function resetFont(){ fontSize=100; applyFont(); }
+function applyFont(){ const el=document.getElementById('two-col'); if(el) el.style.fontSize=fontSize+'%'; }
 
 /* ── ADMIN LOGIN ── */
 function renderLogin(){
